@@ -18,7 +18,7 @@ from lidar_segmentation.detections import MaskRCNNDetections
 # Leave part of the GPU memory unallocated, so can be used for label diffusion
 #gpu_opt = tensorflow.GPUOptions(per_process_gpu_memory_fraction=0.7)
 gpu_opt = tensorflow.compat.v1.GPUOptions(per_process_gpu_memory_fraction=0.7)
-config = tensorflow.ConfigProto(gpu_options=gpu_opt)
+config = tensorflow.compat.v1.ConfigProto(gpu_options=gpu_opt)
 
 # config = tensorflow.ConfigProto()
 config.inter_op_parallelism_threads = 1
