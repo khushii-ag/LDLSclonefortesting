@@ -22,8 +22,8 @@ config = tensorflow.compat.v1.ConfigProto(gpu_options=gpu_opt)
 
 # config = tensorflow.ConfigProto()
 config.inter_op_parallelism_threads = 1
-keras.backend.set_session(tensorflow.Session(config=config))
-
+#keras.backend.set_session(tensorflow.Session(config=config))
+tensorflow.compat.v1.keras.backend.set_session(tensorflow.compat.v1.Session(config=config));
 # Root directory of the project
 ROOT_DIR = os.path.abspath(".")
 
