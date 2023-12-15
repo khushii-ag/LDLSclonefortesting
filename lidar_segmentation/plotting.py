@@ -2,7 +2,7 @@ import plotly.plotly as ply
 from plotly.offline import iplot
 import plotly.graph_objs as go
 import numpy as np
-
+from pathlib import Path
 from lidar_segmentation.segmentation import LidarSegmentationResult
 from colorsys import hsv_to_rgb
 
@@ -169,7 +169,13 @@ def plot_segmentation_result(results=None, label_type='class', size=1.2, labels=
                        for label in color_dict.keys()}
     colorscale = None
     colors = [plot_color_dict[label] for label in labels]
-
+    
+    savepath = Path("data/") / "college" / "file1"
+    if not savepath.exists():
+    	savepath.mkdir()
+    np.savetxt(savepath/"points", points, delimiter=',', header='X,Y,Z', comments='')
+    np.savetxt(savepath/"colors", colors, delimiter=',', header='R,G,B', comments='')
+	
     plot_points(points, size=1.2, opacity=1.0,
                 color=colors, colorscale=colorscale)
 
